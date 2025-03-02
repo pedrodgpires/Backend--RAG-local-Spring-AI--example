@@ -1,0 +1,26 @@
+spring:
+  sql:
+    init:
+      mode: always
+  application:
+    name: demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rag-chat
+    username: postgres
+    password: postgres
+  server:
+    port: 1122  # Set the application port (change as needed)
+  ai:
+    ollama:
+      endpoint: http://localhost:11434/api/generate
+      chat:
+        options:
+          model: llama3.2:latest  # Ensure correct model name
+      embedding:
+        enabled: true
+        model: all-minilm
+    vectorstore:
+      pgvector:
+        index-type: hnsw
+        dimensions: 384
+        distance-type: cosine_distance
